@@ -1,4 +1,5 @@
 import AddProduct from "@/components/AddProductForm";
+import DeleteProduct from "@/components/DeteleProduct";
 import { getAllProducts } from "@/libs/database/data";
 import Link from "next/link";
 
@@ -29,7 +30,7 @@ export default async function ProductPage() {
             </thead>
             <tbody>
               {products.map((product, index) => (
-                <tr key={product.index}>
+                <tr key={index}>
                   <th>{index + 1}</th>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
@@ -39,9 +40,7 @@ export default async function ProductPage() {
                       <Link href={`/product/${product.slug}`}>
                         <button className="btn btn-info">Edit</button>
                       </Link>
-                      <Link href={`/product/${product.slug}`}>
-                        <button className="btn btn-error">Delete</button>
-                      </Link>
+                      <DeleteProduct {...product} />
                     </div>
                   </td>
                 </tr>
