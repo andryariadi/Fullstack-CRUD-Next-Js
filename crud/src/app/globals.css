@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scroll-table {
+  --sb-track-color: #232e33;
+  --sb-thumb-color: #7480ff;
+  --sb-size: 10px;
+}
+
+.scroll-table::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.scroll-table::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+.scroll-table::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 20px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .scroll-table {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
