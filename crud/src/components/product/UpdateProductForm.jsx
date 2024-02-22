@@ -61,9 +61,6 @@ export default function UpdateProduct(product) {
                 <input type="number" placeholder="Price" name="price" value={inputProduct.price} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
                 <input type="text" placeholder="Slug" name="slug" value={inputProduct.slug} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
                 <select name="categories" value={inputProduct.categories} onChange={handleChangeProduct} className="select select-primary w-full">
-                  <option disabled selected>
-                    Category
-                  </option>
                   <option value="Electronic">Electronic</option>
                   <option value="Food">Food</option>
                   <option value="Shirt">Shirt</option>
