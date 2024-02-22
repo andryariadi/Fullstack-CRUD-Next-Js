@@ -1,6 +1,6 @@
-import AddProduct from "@/components/AddProductForm";
-import DeleteProduct from "@/components/DeteleProduct";
-import UpdateProduct from "@/components/UpdateProductForm";
+import AddProduct from "@/components/product/AddProductForm";
+import DeleteProduct from "@/components/product/DeteleProduct";
+import UpdateProduct from "@/components/product/UpdateProductForm";
 import { getAllProducts } from "@/libs/database/data";
 import Link from "next/link";
 import { HiMiniUserGroup } from "react-icons/hi2";
@@ -11,7 +11,7 @@ export default async function ProductPage() {
   console.log(products, "<-----diproductlists");
   return (
     <>
-      <div className="flex flex-col min-h-screen items-center justify-center gap-5">
+      <main className="flex flex-col min-h-screen items-center justify-center gap-5">
         <h1 className="text-3xl font-bold mb-7">Products Lists</h1>
         <div className="flex items-center justify-between w-[50%]">
           <AddProduct />
@@ -54,7 +54,7 @@ export default async function ProductPage() {
             </tbody>
           </table>
         </div>
-      </div>
+      </main>
     </>
   );
 }
