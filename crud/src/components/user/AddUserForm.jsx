@@ -16,7 +16,7 @@ export default function AddUser() {
   return (
     <>
       <div>
-        <button onClick={toggleModal} className="btn btn-primary">
+        <button onClick={toggleModal} className="btn btn-primary tooltip tooltip-primary font-normal" data-tip="Add User">
           <div className="text-[#1D232A]">
             <ImUserPlus size={23} />
           </div>

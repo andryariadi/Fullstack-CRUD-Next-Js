@@ -46,7 +46,7 @@ export default function AddProduct() {
   return (
     <>
       <div>
-        <button onClick={toggleModal} className="btn btn-primary">
+        <button onClick={toggleModal} className="btn btn-primary tooltip tooltip-primary font-normal" data-tip="Add Product">
           <div className="text-[#1D232A]">
             <IoBagAdd size={23} />
           </div>

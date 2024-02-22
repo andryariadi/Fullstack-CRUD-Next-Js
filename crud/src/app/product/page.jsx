@@ -3,7 +3,7 @@ import DeleteProduct from "@/components/product/DeteleProduct";
 import UpdateProduct from "@/components/product/UpdateProductForm";
 import { getAllProducts } from "@/libs/database/data";
 import Link from "next/link";
-import { HiMiniUserGroup } from "react-icons/hi2";
+import { TiThMenu } from "react-icons/ti";
 
 export default async function ProductPage() {
   const products = await getAllProducts();
@@ -15,10 +15,10 @@ export default async function ProductPage() {
         <h1 className="text-3xl font-bold mb-7">Products Lists</h1>
         <div className="flex items-center justify-between w-[50%]">
           <AddProduct />
-          <Link href="/">
+          <Link href="/" className="tooltip tooltip-accent" data-tip="Menu">
             <button className="btn btn-accent">
               <div className="text-[#1D232A]">
-                <HiMiniUserGroup size={23} />
+                <TiThMenu size={23} />
               </div>
             </button>
           </Link>
@@ -38,11 +38,11 @@ export default async function ProductPage() {
             <tbody>
               {products.map((product, index) => (
                 <tr key={index}>
-                  <th>{index + 1}</th>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.slug}</td>
-                  <td>{product.categories}</td>
+                  <th className="text-sm">{index + 1}</th>
+                  <td className="text-sm">{product.name}</td>
+                  <td className="text-sm">{product.price}</td>
+                  <td className="text-sm">{product.slug}</td>
+                  <td className="text-sm">{product.categories}</td>
                   <td>
                     <div className="flex items-center justify-start gap-5">
                       <UpdateProduct {...product} />

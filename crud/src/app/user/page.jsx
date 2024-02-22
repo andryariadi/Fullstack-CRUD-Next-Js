@@ -2,7 +2,7 @@ import AddUser from "@/components/user/AddUserForm";
 import DeleteUser from "@/components/user/DeleteUser";
 import { getUsers } from "@/libs/database/data";
 import Link from "next/link";
-import { IoBagHandle } from "react-icons/io5";
+import { TiThMenu } from "react-icons/ti";
 
 export default async function UserPage() {
   const users = await getUsers();
@@ -13,10 +13,10 @@ export default async function UserPage() {
       <h1 className="text-3xl font-bold mb-7">Users Lists</h1>
       <div className="flex items-center justify-between w-[50%]">
         <AddUser />
-        <Link href="/product">
+        <Link href="/" className="tooltip tooltip-accent" data-tip="Menu">
           <button className="btn btn-accent">
             <div className="text-[#1D232A]">
-              <IoBagHandle size={23} />
+              <TiThMenu size={23} />
             </div>
           </button>
         </Link>
@@ -29,17 +29,17 @@ export default async function UserPage() {
               <th className="w-40">Name</th>
               <th className="w-40">Email</th>
               <th className="w-40">Gender</th>
-              <th className="w-40">Action</th>
+              <th className="w-20">Action</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, index) => (
               <tr key={index}>
-                <th>{index + 1}</th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.gender}</td>
-                <td>
+                <th className="text-sm">{index + 1}</th>
+                <td className="text-sm">{user.name}</td>
+                <td className="text-sm">{user.email}</td>
+                <td className="text-sm">{user.gender}</td>
+                <td className="text-sm">
                   <div className="flex items-center justify-start gap-5">
                     <div>Edit</div>
                     <DeleteUser user={user} />
