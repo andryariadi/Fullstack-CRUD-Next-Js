@@ -1,8 +1,9 @@
 "use client";
 
-import { addProduct, deleteProduct } from "@/libs/database/data";
+import { deleteProduct } from "@/libs/database/data";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 export default function DeleteProduct(product) {
   const [modal, setModal] = useState(false);
@@ -29,7 +30,9 @@ export default function DeleteProduct(product) {
     <>
       <div>
         <button onClick={toggleModal} className="btn btn-error">
-          Delete
+          <div className="text-[#1D232A]">
+            <RiDeleteBin6Fill size={23} />
+          </div>
         </button>
         <input type="checkbox" checked={modal} onChange={toggleModal} className="modal-toggle" />
         <div className="modal">

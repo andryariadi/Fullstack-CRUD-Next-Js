@@ -1,12 +1,14 @@
 import AddProduct from "@/components/AddProductForm";
 import DeleteProduct from "@/components/DeteleProduct";
+import UpdateProduct from "@/components/UpdateProductForm";
 import { getAllProducts } from "@/libs/database/data";
 import Link from "next/link";
+import { HiMiniUserGroup } from "react-icons/hi2";
 
 export default async function ProductPage() {
   const products = await getAllProducts();
 
-  console.log(products, "<-----diproductlists");
+  // console.log(products, "<-----diproductlists");
   return (
     <>
       <div className="flex flex-col min-h-screen items-center justify-center gap-5">
@@ -14,7 +16,11 @@ export default async function ProductPage() {
         <div className="flex items-center justify-between w-[50%]">
           <AddProduct />
           <Link href="/">
-            <button className="btn btn-accent">Users</button>
+            <button className="btn btn-accent">
+              <div className="text-[#1D232A]">
+                <HiMiniUserGroup size={23} />
+              </div>
+            </button>
           </Link>
         </div>
         <div className="overflow-y-auto w-[50%] max-h-[400px] scroll-table">
@@ -37,9 +43,7 @@ export default async function ProductPage() {
                   <td>{product.slug}</td>
                   <td>
                     <div className="flex items-center justify-start gap-5">
-                      <Link href={`/product/${product.slug}`}>
-                        <button className="btn btn-info">Edit</button>
-                      </Link>
+                      <UpdateProduct {...product} />
                       <DeleteProduct {...product} />
                     </div>
                   </td>

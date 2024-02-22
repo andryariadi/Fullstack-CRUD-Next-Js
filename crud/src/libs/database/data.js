@@ -59,7 +59,7 @@ export const deleteProduct = async (slug) => {
   return res.json();
 };
 
-export const updateProduct = async (slug, productData) => {
+export const updateProduct = async ({ slug, ...productData }) => {
   const res = await fetch(`http://localhost:3000/api/product/${slug}`, {
     method: "PUT",
     headers: {

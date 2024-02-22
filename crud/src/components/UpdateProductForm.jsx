@@ -1,11 +1,11 @@
 "use client";
 
-import { addProduct } from "@/libs/database/data";
+import { updateProduct } from "@/libs/database/data";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { IoBagAdd } from "react-icons/io5";
+import { BiSolidEditAlt } from "react-icons/bi";
 
-export default function AddProduct() {
+export default function UpdateProduct(product) {
   const [modal, setModal] = useState(false);
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
@@ -15,9 +15,9 @@ export default function AddProduct() {
   };
 
   const [inputProduct, setInputProduct] = useState({
-    name: "",
-    price: 0,
-    slug: "",
+    name: product.name,
+    price: product.price,
+    slug: product.slug,
   });
 
   const handleChangeProduct = (e) => {
@@ -26,35 +26,35 @@ export default function AddProduct() {
     setInputProduct({ ...inputProduct, [name]: value });
   };
 
-  const handleSubmitProduct = async (e) => {
+  const handleUpdateProduct = async (e) => {
     e.preventDefault();
     setIsPending(true);
     try {
-      await addProduct(inputProduct);
+      await updateProduct({ slug: product.slug, ...inputProduct });
       setIsPending(false);
       router.refresh();
-      setInputProduct({ name: "", price: 0, slug: "" });
       setModal(!modal);
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(inputProduct, "<---inputproduct");
+  console.log(product, "<---diupdateproduct");
+  console.log(inputProduct, "<---inputupdateproduct");
 
   return (
     <>
       <div>
         <button onClick={toggleModal} className="btn btn-primary">
           <div className="text-[#1D232A]">
-            <IoBagAdd size={23} />
+            <BiSolidEditAlt size={23} />
           </div>
         </button>
         <input type="checkbox" checked={modal} onChange={toggleModal} className="modal-toggle" />
         <div className="modal">
           <div className="modal-box flex flex-col gap-5">
-            <h3 className="font-bold text-center">Add New Product</h3>
-            <form onSubmit={handleSubmitProduct}>
+            <h3 className="font-bold text-center">Update {product.name}</h3>
+            <form onSubmit={handleUpdateProduct}>
               <div className="form-control flex flex-col gap-5">
                 <input type="text" placeholder="Name" name="name" value={inputProduct.name} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
                 <input type="number" placeholder="Price" name="price" value={inputProduct.price} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
@@ -66,11 +66,11 @@ export default function AddProduct() {
                 </button>
                 {isPending ? (
                   <button type="submit" className="btn loading">
-                    Saving...
+                    Updating...
                   </button>
                 ) : (
                   <button type="submit" className="btn btn-primary">
-                    Save
+                    Update
                   </button>
                 )}
               </div>
