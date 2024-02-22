@@ -1,15 +1,25 @@
 import { connectToDB } from ".";
-import Product from "./models/product.model";
+import User from "./models/user.model";
 
-export const getProducts = async () => {
+export const getUsers = async () => {
   try {
     connectToDB();
-
-    const products = await Product.find();
-    return products;
+    const users = await User.find();
+    return users;
   } catch (error) {
     console.log(error);
-    throw new Error(error);
+    throw new Error("Failed to fetch users!");
+  }
+};
+
+export const getUserById = async (id) => {
+  try {
+    connectToDB();
+    const user = await User.findById(id);
+    return user;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to fetch detail user!");
   }
 };
 

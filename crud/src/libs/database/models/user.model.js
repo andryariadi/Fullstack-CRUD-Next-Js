@@ -1,5 +1,4 @@
-import { model } from "mongoose";
-import { Schema, models } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
 const UserSchema = new Schema(
   {
@@ -8,6 +7,10 @@ const UserSchema = new Schema(
       required: true,
     },
     email: {
+      type: String,
+      required: true,
+    },
+    gender: {
       type: String,
       required: true,
     },
