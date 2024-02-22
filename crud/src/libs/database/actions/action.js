@@ -24,3 +24,18 @@ export const addUser = async (formData) => {
     throw new Error("Failed to add user!");
   }
 };
+
+export const deleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+  try {
+    connectToDB();
+
+    await User.findByIdAndDelete(id);
+    console.log("User deleted successfully!");
+
+    revalidatePath("/user");
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to delete user!");
+  }
+};

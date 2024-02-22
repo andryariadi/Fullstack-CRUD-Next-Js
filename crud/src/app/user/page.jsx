@@ -1,4 +1,5 @@
 import AddUser from "@/components/user/AddUserForm";
+import DeleteUser from "@/components/user/DeleteUser";
 import { getUsers } from "@/libs/database/data";
 import Link from "next/link";
 import { IoBagHandle } from "react-icons/io5";
@@ -12,7 +13,7 @@ export default async function UserPage() {
       <h1 className="text-3xl font-bold mb-7">Users Lists</h1>
       <div className="flex items-center justify-between w-[50%]">
         <AddUser />
-        <Link href="/">
+        <Link href="/product">
           <button className="btn btn-accent">
             <div className="text-[#1D232A]">
               <IoBagHandle size={23} />
@@ -41,9 +42,7 @@ export default async function UserPage() {
                 <td>
                   <div className="flex items-center justify-start gap-5">
                     <div>Edit</div>
-                    <div>Delete</div>
-                    {/* <UpdateProduct {...product} /> */}
-                    {/* <DeleteProduct {...product} /> */}
+                    <DeleteUser user={user} />
                   </div>
                 </td>
               </tr>

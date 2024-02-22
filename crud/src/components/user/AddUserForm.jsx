@@ -1,15 +1,13 @@
 "use client";
 
 import { addUser } from "@/libs/database/actions/action";
-import { addProduct } from "@/libs/database/data";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ImUserPlus } from "react-icons/im";
 
 export default function AddUser() {
   const [modal, setModal] = useState(false);
   const [isPending, setIsPending] = useState(false);
-  const router = useRouter();
+  const ref = useRef();
 
   const toggleModal = () => {
     setModal(!modal);
@@ -28,7 +26,9 @@ export default function AddUser() {
           <div className="modal-box flex flex-col gap-5">
             <h3 className="font-bold text-center">Add New User</h3>
             <form
+              ref={ref}
               action={async (formData) => {
+                ref.current.reset();
                 await addUser(formData);
                 setModal(!modal);
               }}
