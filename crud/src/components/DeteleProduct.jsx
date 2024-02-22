@@ -29,9 +29,9 @@ export default function DeleteProduct(product) {
   return (
     <>
       <div>
-        <button onClick={toggleModal} className="btn btn-error">
+        <button onClick={toggleModal} className="btn btn-error btn-sm">
           <div className="text-[#1D232A]">
-            <RiDeleteBin6Fill size={23} />
+            <RiDeleteBin6Fill size={20} />
           </div>
         </button>
         <input type="checkbox" checked={modal} onChange={toggleModal} className="modal-toggle" />

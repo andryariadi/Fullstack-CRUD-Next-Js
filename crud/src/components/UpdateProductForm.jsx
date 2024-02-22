@@ -18,6 +18,7 @@ export default function UpdateProduct(product) {
     name: product.name,
     price: product.price,
     slug: product.slug,
+    categories: product.categories,
   });
 
   const handleChangeProduct = (e) => {
@@ -45,9 +46,9 @@ export default function UpdateProduct(product) {
   return (
     <>
       <div>
-        <button onClick={toggleModal} className="btn btn-primary">
+        <button onClick={toggleModal} className="btn btn-primary btn-sm">
           <div className="text-[#1D232A]">
-            <BiSolidEditAlt size={23} />
+            <BiSolidEditAlt size={20} />
           </div>
         </button>
         <input type="checkbox" checked={modal} onChange={toggleModal} className="modal-toggle" />
@@ -59,6 +60,14 @@ export default function UpdateProduct(product) {
                 <input type="text" placeholder="Name" name="name" value={inputProduct.name} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
                 <input type="number" placeholder="Price" name="price" value={inputProduct.price} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
                 <input type="text" placeholder="Slug" name="slug" value={inputProduct.slug} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
+                <select name="categories" value={inputProduct.categories} onChange={handleChangeProduct} className="select select-primary w-full">
+                  <option disabled selected>
+                    Category
+                  </option>
+                  <option value="Electronic">Electronic</option>
+                  <option value="Food">Food</option>
+                  <option value="Shirt">Shirt</option>
+                </select>
               </div>
               <div className="modal-action">
                 <button onClick={toggleModal} type="button" className="btn btn-active btn-ghost">

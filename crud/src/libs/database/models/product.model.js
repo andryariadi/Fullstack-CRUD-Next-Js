@@ -14,6 +14,10 @@ const ProductSchema = new Schema(
       type: String,
       required: true,
     },
+    categories: {
+      type: [String],
+      required: true,
+    },
   },
   {
     timestamps: true,

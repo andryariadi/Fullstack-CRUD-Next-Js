@@ -18,6 +18,7 @@ export default function AddProduct() {
     name: "",
     price: 0,
     slug: "",
+    categories: [],
   });
 
   const handleChangeProduct = (e) => {
@@ -59,6 +60,14 @@ export default function AddProduct() {
                 <input type="text" placeholder="Name" name="name" value={inputProduct.name} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
                 <input type="number" placeholder="Price" name="price" value={inputProduct.price} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
                 <input type="text" placeholder="Slug" name="slug" value={inputProduct.slug} onChange={handleChangeProduct} className="input input-bordered input-primary w-full" />
+                <select name="categories" value={inputProduct.categories} onChange={handleChangeProduct} className="select select-primary w-full">
+                  <option value="" disabled>
+                    Category
+                  </option>
+                  <option value="Electronic">Electronic</option>
+                  <option value="Food">Food</option>
+                  <option value="Shirt">Shirt</option>
+                </select>
               </div>
               <div className="modal-action">
                 <button onClick={toggleModal} type="button" className="btn btn-active btn-ghost">

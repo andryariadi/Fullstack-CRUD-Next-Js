@@ -8,7 +8,7 @@ import { HiMiniUserGroup } from "react-icons/hi2";
 export default async function ProductPage() {
   const products = await getAllProducts();
 
-  // console.log(products, "<-----diproductlists");
+  console.log(products, "<-----diproductlists");
   return (
     <>
       <div className="flex flex-col min-h-screen items-center justify-center gap-5">
@@ -31,6 +31,7 @@ export default async function ProductPage() {
                 <th className="w-40">Name</th>
                 <th className="w-40">Price</th>
                 <th className="w-40">Slug</th>
+                <th className="w-40">Categories</th>
                 <th className="w-40">Action</th>
               </tr>
             </thead>
@@ -41,6 +42,7 @@ export default async function ProductPage() {
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.slug}</td>
+                  <td>{product.categories}</td>
                   <td>
                     <div className="flex items-center justify-start gap-5">
                       <UpdateProduct {...product} />

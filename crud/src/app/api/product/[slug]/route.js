@@ -55,9 +55,9 @@ export const PUT = async (request, { params }) => {
 
     connectToDB();
 
-    const { name, price } = await request.json();
+    const { name, price, categories } = await request.json();
 
-    const updatedProduct = await Product.findOneAndUpdate({ slug }, { name, price }, { new: true });
+    const updatedProduct = await Product.findOneAndUpdate({ slug }, { name, price, categories }, { new: true });
 
     if (!updatedProduct) {
       return NextResponse.json({ error: "Product not found!" }, { status: 404 });

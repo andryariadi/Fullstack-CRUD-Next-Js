@@ -20,7 +20,7 @@ export const GET = async () => {
 };
 
 export const POST = async (request) => {
-  const { name, price, slug } = await request.json();
+  const { name, price, slug, categories } = await request.json();
   try {
     connectToDB();
 
@@ -29,6 +29,7 @@ export const POST = async (request) => {
       name,
       price,
       slug,
+      categories,
     });
 
     // Simpan produk ke dalam database
