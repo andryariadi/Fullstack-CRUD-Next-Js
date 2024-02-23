@@ -39,3 +39,25 @@ export const deleteUser = async (formData) => {
     throw new Error("Failed to delete user!");
   }
 };
+
+export const updateUser = async (formData) => {
+  const { id, name, email, gender } = Object.fromEntries(formData);
+  try {
+    connectToDB();
+
+    const updateFields = {
+      name,
+      email,
+      gender,
+    };
+
+    await User.findByIdAndUpdate(id, updateFields);
+
+    console.log("User updated successfully!");
+
+    revalidatePath("/user");
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to update user!");
+  }
+};

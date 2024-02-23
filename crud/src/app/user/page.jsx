@@ -1,5 +1,7 @@
+import Menu from "@/components/menu";
 import AddUser from "@/components/user/AddUserForm";
 import DeleteUser from "@/components/user/DeleteUser";
+import UpdateUser from "@/components/user/UpdateUserForm";
 import { getUsers } from "@/libs/database/data";
 import Link from "next/link";
 import { TiThMenu } from "react-icons/ti";
@@ -13,13 +15,14 @@ export default async function UserPage() {
       <h1 className="text-3xl font-bold mb-7">Users Lists</h1>
       <div className="flex items-center justify-between w-[50%]">
         <AddUser />
-        <Link href="/" className="tooltip tooltip-accent" data-tip="Menu">
+        <Menu />
+        {/* <Link href="/" className="tooltip tooltip-accent" data-tip="Menu">
           <button className="btn btn-accent">
             <div className="text-[#1D232A]">
               <TiThMenu size={23} />
             </div>
           </button>
-        </Link>
+        </Link> */}
       </div>
       <div className="overflow-y-auto w-[50%] max-h-[400px] scroll-table">
         <table className="table table-zebra table-xs table-pin-rows table-pin-cols">
@@ -41,7 +44,7 @@ export default async function UserPage() {
                 <td className="text-sm">{user.gender}</td>
                 <td className="text-sm">
                   <div className="flex items-center justify-start gap-5">
-                    <div>Edit</div>
+                    <UpdateUser user={user} />
                     <DeleteUser user={user} />
                   </div>
                 </td>

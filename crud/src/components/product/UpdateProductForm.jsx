@@ -46,7 +46,7 @@ export default function UpdateProduct(product) {
   return (
     <>
       <div>
-        <button onClick={toggleModal} className="btn btn-primary btn-sm">
+        <button onClick={toggleModal} className="btn btn-accent btn-sm">
           <div className="text-[#1D232A]">
             <BiSolidEditAlt size={20} />
           </div>

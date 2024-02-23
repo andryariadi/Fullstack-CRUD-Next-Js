@@ -3,6 +3,7 @@
 import { deleteUser } from "@/libs/database/actions/action";
 import { useState } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import ButtonSubmit from "./ButtonAdd";
 
 export default function DeleteUser({ user }) {
   const [modal, setModal] = useState(false);
@@ -27,11 +28,14 @@ export default function DeleteUser({ user }) {
               <button onClick={toggleModal} type="button" className="btn btn-active btn-ghost">
                 Close
               </button>
-              <form action={deleteUser}>
-                <input type="text" name="id" value={user._id} />
-                <button type="submit" className="btn btn-primary">
-                  Delete
-                </button>
+              <form
+                action={async (formData) => {
+                  await deleteUser(formData);
+                  setModal(!modal);
+                }}
+              >
+                <input type="hidden" name="id" value={user._id} />
+                <ButtonSubmit title="Delete" titlePending="Deleting..." />
               </form>
             </div>
           </div>

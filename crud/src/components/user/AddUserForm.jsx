@@ -3,10 +3,10 @@
 import { addUser } from "@/libs/database/actions/action";
 import { useRef, useState } from "react";
 import { ImUserPlus } from "react-icons/im";
+import ButtonSubmit from "./ButtonAdd";
 
 export default function AddUser() {
   const [modal, setModal] = useState(false);
-  const [isPending, setIsPending] = useState(false);
   const ref = useRef();
 
   const toggleModal = () => {
@@ -36,7 +36,7 @@ export default function AddUser() {
               <div className="form-control flex flex-col gap-5">
                 <input type="text" placeholder="Name" name="name" className="input input-bordered input-primary w-full" />
                 <input type="email" placeholder="Email" name="email" className="input input-bordered input-primary w-full" />
-                <select name="gender" className="select select-primary w-full">
+                <select name="gender" id="gender" className="select select-primary w-full">
                   <option selected disabled>
                     Gender
                   </option>
@@ -48,15 +48,7 @@ export default function AddUser() {
                 <button onClick={toggleModal} type="button" className="btn btn-active btn-ghost">
                   Close
                 </button>
-                {isPending ? (
-                  <button type="submit" className="btn loading">
-                    Saving...
-                  </button>
-                ) : (
-                  <button type="submit" className="btn btn-primary">
-                    Save
-                  </button>
-                )}
+                <ButtonSubmit title="Save" titlePending="Saving..." />
               </div>
             </form>
           </div>
