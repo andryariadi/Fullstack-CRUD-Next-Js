@@ -87,14 +87,21 @@ export const updateProduct = async ({ slug, ...productData }) => {
 };
 
 // Action Todo:
-export const getAllTodos = async () => {
-  const res = fetch("http://localhost:3000/api/todo", {
-    cache: "no-store",
-  });
+export const getTodos = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/todo", {
+      cache: "no-store",
+    });
 
-  if (!res.ok) throw new Error("Failed to fetch todos!");
+    if (!res.ok) {
+      throw new Error("Failed to fetch todos!");
+    }
 
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch todos!");
+  }
 };
 
 export const getTodoById = async (id) => {
