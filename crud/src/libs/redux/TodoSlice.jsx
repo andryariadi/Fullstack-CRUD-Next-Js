@@ -7,7 +7,7 @@ const todoSlice = createSlice({
   },
   reducers: {
     getAllTodos: (state, action) => {
-      console.log({ state, action }, "<-----ditodoslice");
+      console.log({ state, action }, "<-----ditodoslice1");
       state.todos = action.payload.map((todo) => {
         return {
           _id: todo._id,
@@ -17,8 +17,12 @@ const todoSlice = createSlice({
         };
       });
     },
+    addTodo: (state, action) => {
+      console.log({ state, action }, "<-----ditodoslice2");
+      state.todos.push(action.payload);
+    },
   },
 });
 
 export default todoSlice.reducer;
-export const { getAllTodos } = todoSlice.actions;
+export const { getAllTodos, addTodo } = todoSlice.actions;

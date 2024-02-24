@@ -105,50 +105,70 @@ export const getTodos = async () => {
 };
 
 export const getTodoById = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
+      cache: "no-store",
+    });
 
-  if (!res.ok) throw new Error("Failed to fetch detail todo!");
+    if (!res.ok) throw new Error("Failed to fetch detail todo!");
 
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to fetch detail todo!");
+  }
 };
 
-export const addTodo = async (todoData) => {
-  const res = await fetch("http://localhost:3000/api/todo", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(todoData),
-  });
+export const createTodo = async (todoData) => {
+  try {
+    const res = await fetch("http://localhost:3000/api/todo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(todoData),
+    });
 
-  if (!res.ok) throw new Error("Failed to add todo!");
+    if (!res.ok) throw new Error("Failed to add todo!");
 
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to add todo!");
+  }
 };
 
 export const deleteTodo = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
-    method: "DELETE",
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
+      method: "DELETE",
+      cache: "no-store",
+    });
 
-  if (!res.ok) throw new Error("Failed to delete todo!");
+    if (!res.ok) throw new Error("Failed to delete todo!");
 
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to delete todo!");
+  }
 };
 
 export const updateTodo = async ({ id, ...todoData }) => {
-  const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(todoData),
-  });
+  try {
+    const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(todoData),
+    });
 
-  if (!res.ok) throw new Error("Failed to update todo!");
+    if (!res.ok) throw new Error("Failed to update todo!");
 
-  return res.json();
+    return res.json();
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to update todo!");
+  }
 };

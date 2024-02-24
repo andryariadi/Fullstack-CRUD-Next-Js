@@ -4,6 +4,7 @@ import Menu from "../Menu";
 import { getTodos } from "@/libs/database/data";
 import { getAllTodos } from "@/libs/redux/TodoSlice";
 import { useEffect } from "react";
+import AddTodo from "./AddTodoForm";
 
 export default function Todo({ dataTodos }) {
   const todos = useSelector((state) => state.todoStore.todos);
@@ -18,7 +19,7 @@ export default function Todo({ dataTodos }) {
     <>
       <h1 className="text-3xl font-bold mb-7">Todo Lists</h1>
       <div className="flex items-center justify-between w-[50%]">
-        <div>Add</div>
+        <AddTodo />
         <Menu />
       </div>
       <div className="overflow-y-auto w-[50%] max-h-[400px] scroll-table">
