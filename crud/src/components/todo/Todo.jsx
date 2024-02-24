@@ -5,6 +5,7 @@ import { getTodos } from "@/libs/database/data";
 import { getAllTodos } from "@/libs/redux/TodoSlice";
 import { useEffect } from "react";
 import AddTodo from "./AddTodoForm";
+import DeleteTodo from "./DeleteTodo";
 
 export default function Todo({ dataTodos }) {
   const todos = useSelector((state) => state.todoStore.todos);
@@ -43,7 +44,7 @@ export default function Todo({ dataTodos }) {
                 <td>
                   <div className="flex items-center justify-start gap-5">
                     <div>Edit</div>
-                    <div>Delete</div>
+                    <DeleteTodo {...todo} />
                     {/* <UpdateProduct {...product} />
                     <DeleteProduct {...product} /> */}
                   </div>
