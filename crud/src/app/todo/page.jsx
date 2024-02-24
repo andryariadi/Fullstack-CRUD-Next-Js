@@ -1,19 +1,12 @@
-import Menu from "@/components/menu";
-import AddProduct from "@/components/product/AddProductForm";
-import DeleteProduct from "@/components/product/DeteleProduct";
-import UpdateProduct from "@/components/product/UpdateProductForm";
-import { getAllProducts } from "@/libs/database/data";
+import Menu from "@/components/Menu";
 
-export default async function ProductPage() {
-  const products = await getAllProducts();
-
-  console.log(products, "<-----diproductlists");
+export default function TodoPage() {
   return (
     <>
       <main className="flex flex-col min-h-screen items-center justify-center gap-5">
-        <h1 className="text-3xl font-bold mb-7">Products Lists</h1>
+        <h1 className="text-3xl font-bold mb-7">Todo Lists</h1>
         <div className="flex items-center justify-between w-[50%]">
-          <AddProduct />
+          <div>Add</div>
           <Menu />
         </div>
         <div className="overflow-y-auto w-[50%] max-h-[400px] scroll-table">
@@ -21,15 +14,14 @@ export default async function ProductPage() {
             <thead>
               <tr className="text-base">
                 <th className="w-10">ID</th>
-                <th className="w-40">Name</th>
-                <th className="w-40">Price</th>
-                <th className="w-40">Slug</th>
+                <th className="w-40">Title</th>
+                <th className="w-40">Status</th>
                 <th className="w-40">Categories</th>
                 <th className="w-40">Action</th>
               </tr>
             </thead>
             <tbody>
-              {products.map((product, index) => (
+              {/* {products.map((product, index) => (
                 <tr key={index}>
                   <th className="text-sm">{index + 1}</th>
                   <td className="text-sm">{product.name}</td>
@@ -43,7 +35,7 @@ export default async function ProductPage() {
                     </div>
                   </td>
                 </tr>
-              ))}
+              ))} */}
             </tbody>
           </table>
         </div>

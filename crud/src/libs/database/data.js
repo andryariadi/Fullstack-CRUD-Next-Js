@@ -1,6 +1,7 @@
 import { connectToDB } from ".";
 import User from "./models/user.model";
 
+// Action User:
 export const getUsers = async () => {
   try {
     connectToDB();
@@ -23,6 +24,7 @@ export const getUserById = async (id) => {
   }
 };
 
+// Action Product:
 export const getAllProducts = async () => {
   const res = await fetch("http://localhost:3000/api/product", {
     cache: "no-store",
@@ -80,6 +82,66 @@ export const updateProduct = async ({ slug, ...productData }) => {
   });
 
   if (!res.ok) throw new Error("Failed to update product!");
+
+  return res.json();
+};
+
+// Action Todo:
+export const getAllTodos = async () => {
+  const res = fetch("http://localhost:3000/api/todo", {
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch todos!");
+
+  return res.json();
+};
+
+export const getTodoById = async (id) => {
+  const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch detail todo!");
+
+  return res.json();
+};
+
+export const addTodo = async (todoData) => {
+  const res = await fetch("http://localhost:3000/api/todo", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(todoData),
+  });
+
+  if (!res.ok) throw new Error("Failed to add todo!");
+
+  return res.json();
+};
+
+export const deleteTodo = async (id) => {
+  const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
+    method: "DELETE",
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error("Failed to delete todo!");
+
+  return res.json();
+};
+
+export const updateTodo = async ({ id, ...todoData }) => {
+  const res = await fetch(`http://localhost:3000/api/todo/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(todoData),
+  });
+
+  if (!res.ok) throw new Error("Failed to update todo!");
 
   return res.json();
 };
