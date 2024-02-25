@@ -1,4 +1,5 @@
 import Menu from "@/components/menu";
+import { usePathname } from "next/navigation";
 
 export default async function Home() {
   return (
