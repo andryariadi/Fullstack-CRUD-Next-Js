@@ -1,8 +1,9 @@
-import Menu from "@/components/menu";
 import AddProduct from "@/components/product/AddProductForm";
 import DeleteProduct from "@/components/product/DeteleProduct";
 import UpdateProduct from "@/components/product/UpdateProductForm";
 import { getAllProducts } from "@/libs/database/data";
+import Link from "next/link";
+import { IoIosHome } from "react-icons/io";
 
 export default async function ProductPage() {
   const products = await getAllProducts();
@@ -14,7 +15,11 @@ export default async function ProductPage() {
         <h1 className="text-3xl font-bold mb-7">Products Lists</h1>
         <div className="flex items-center justify-between w-[50%]">
           <AddProduct />
-          <Menu />
+          <Link href="/" className="flex items-center justify-center rounded-md text-[#1D232A] btn btn-primary tooltip tooltip-primary" data-tip="Home">
+            <div>
+              <IoIosHome size={23} />
+            </div>
+          </Link>
         </div>
         <div className="overflow-y-auto w-[50%] max-h-[400px] scroll-table">
           <table className="table table-zebra table-xs table-pin-rows table-pin-cols">
