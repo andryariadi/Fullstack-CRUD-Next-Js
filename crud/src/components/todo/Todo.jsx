@@ -1,7 +1,6 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import Menu from "../Menu";
-import { getTodos } from "@/libs/database/data";
 import { getAllTodos } from "@/libs/redux/TodoSlice";
 import { useEffect } from "react";
 import AddTodo from "./AddTodoForm";
